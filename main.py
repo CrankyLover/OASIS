@@ -5,10 +5,7 @@ Round-based labeling:
   Round 1..N: uncertain_sample from prediction valley (100/round) → retrain → predict
   Early stop: when valley contains < 8% of unlabeled candidates, or budget exhausted.
 
-After all queries: threshold selection via scaledoc_reuse for accuracy targets.
-
-Best config:
-    python run_query_time_gnn.py --global-loss --smooth-weight 0.1 --supcon-weight 0.2
+After all queries: threshold selection via progressive sampling at user-defined accuracy targets.
 """
 
 import argparse
@@ -174,7 +171,6 @@ def main():
     print("Threshold selection")
     print(f"{'=' * 60}")
 
-    # alpha_values = [0.8, 0.83, 0.85, 0.88, 0.9, 0.92, 0.95, 0.97, 0.98, 0.99]
     alpha_value = args.target_accuracy
     total_final_results, total_llm_cost = [], []
     all_fig_vars = []
@@ -187,7 +183,7 @@ def main():
     last_sample_idx = {}
     last_l = 0
     last_r = 1
-        # 遍历所有的取值，找到稳定的rate
+    # iteratively add samples
     for sample_idx, sample_ratio in enumerate(sample_list):
         if sample_idx == 0:
             l, r, fig_var, samps = progressive_calibration(probs, oracle, last_sample_idx, oracle_nodes, document_contents, query_content, alpha=args.target_accuracy, last_sample_number=0, sample_number=sample_ratio)
