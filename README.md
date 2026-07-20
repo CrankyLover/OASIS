@@ -120,9 +120,9 @@ python main.py   --doc-path /path/to/documents.pkl   --query-path /path/to/query
 | `--label-smoothing` | `float` | `0.1` | Label-smoothing coefficient. |
 | `--supcon-weight` | `float` | `0.2` | Weight of the supervised contrastive loss. |
 | `--smooth-weight` | `float` | `0.1` | Weight of the graph-smoothing regularizer. |
-| `--lambda1` | `float` | `0.08` | Early-stopping threshold $\eta_1$. |
-| `--lambda2` | `float` | `0.08` | Early-stopping threshold $\eta_2$. |
-| `--lambda3` | `float` | `0.09` | Early-stopping threshold $\eta_3$. |
+| `--eta1` | `float` | `0.08` | Early-stopping threshold $\eta_1$. |
+| `--eta2` | `float` | `0.08` | Early-stopping threshold $\eta_2$. |
+| `--eta3` | `float` | `0.09` | Early-stopping threshold $\eta_3$. |
 | `--temperature` | `float` | `0.3` | Temperature used by the contrastive objective. |
 | `--unlabeled-temp` | `float` | `None` | Optional temperature specifically for unlabeled samples. |
 
