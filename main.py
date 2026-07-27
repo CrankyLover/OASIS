@@ -112,7 +112,7 @@ def main():
 
     # Round 0: graph-coverage initial sample
     batches = graph_uniform_minibatches(graph.graph, graph.num_nodes, args.first_sample, args.mini_batches, seed=args.seed)
-    oracle_annotated_labels = merge_batch_labels(batches, document_contents, query_content, oracle, gt)
+    oracle_annotated_labels = merge_batch_labels(batches, document_contents, query_content, oracle)
     pos = sum(1 for v in oracle_annotated_labels.values() if v)
     print(f"Oracle (Round 0): total={len(oracle_annotated_labels)}, pos={pos}, neg={len(oracle_annotated_labels)-pos}")
 
