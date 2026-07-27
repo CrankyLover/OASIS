@@ -60,7 +60,7 @@ def main():
     parser.add_argument("--eta2", type=float, default=0.08)
     parser.add_argument("--eta3", type=float, default=0.09)
     parser.add_argument("--smooth-mode", default="unlabeled")
-    parser.add_argument("--global-loss", action="store_true")
+    parser.add_argument("--global-loss", action="store_true", default=True)
     parser.add_argument("--edge-weight", action="store_true")
     parser.add_argument("--temperature", type=float, default=0.3)
     parser.add_argument("--unlabeled-temp", type=float, default=None)
