@@ -177,7 +177,7 @@ def graph_uniform_minibatches(
     return [batch for batch in batches if batch]
 
 
-def merge_batch_labels(minibatches, document_contents, query_content, oracle, groundtruth):
+def merge_batch_labels(minibatches, document_contents, query_content, oracle):
 
     sample_ids = set()
     for batch in minibatches:
